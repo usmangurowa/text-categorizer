@@ -7,8 +7,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "lint": "eslint src/**/*.ts",
-    "prepare": "npm run build"
+    "lint": "eslint src/**/*.ts"
   },
   "keywords": [
     "content",
