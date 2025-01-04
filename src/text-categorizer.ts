@@ -1,5 +1,5 @@
 import { PATTERNS } from "./constants";
-import { ContentCategory } from "./types";
+import type { ContentCategory } from "./types";
 
 export class TextCategorizer {
   private static isLink(text: string): boolean {
