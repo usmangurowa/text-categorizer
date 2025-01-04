@@ -17,9 +17,28 @@
     "parser",
     "type",
     "format",
-    "typescript"
+    "typescript",
+    "categorizer",
+    "text content classifier"
   ],
-  "author": "Your Name",
+  "homepage": "https://github.com/usmangurowa/text-categorizer#readme",
+  "bugs": {
+    "url": "https://github.com/usmangurowa/text-categorizer/issues",
+    "email": "usmanhassangu@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usmangurowa/text-categorizer.git"
+  },
+  "author": "Usman Hassan",
+  "contributors": [
+    {
+      "name": "Usman Hassan",
+      "email": "usmanhassangu@gmail.com",
+      "url": "https://github.com/usmangurowa",
+      "twitter": "https://twitter.com/usmangurowa"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.0.0",
