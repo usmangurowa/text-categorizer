@@ -1,86 +1,127 @@
-// Install the package
+# Content Type Classifier
+
+A versatile utility for classifying and extracting metadata from various types of text content. This package can identify links, code snippets, currencies, social posts, CSV data, and more, making it a powerful tool for content analysis.
+
+## Installation
+
+Install the package using npm:
+
+```bash
 npm install content-type-classifier
+```
 
-// Basic Usage
+## Basic Usage
+
+### Importing the Classifier
+
+```javascript
 import { ContentTypeClassifier } from 'content-type-classifier';
+```
 
-// Classify any text content
+### Classifying Text Content
+
+```javascript
 const result = ContentTypeClassifier.categorize("your text here");
+console.log(result);
+```
 
-import { ContentTypeClassifier } from 'content-type-classifier';
+## Features and Examples
 
-// 1. Detecting Links
+### 1. Detecting Links
+
+```javascript
 const linkResult = ContentTypeClassifier.categorize("https://www.example.com");
 console.log(linkResult);
-// Output: {
-// type: "link",
-// content: "https://www.example.com",
-// metadata: { links: ["https://www.example.com"] }
+// Output:
+// {
+//   type: "link",
+//   content: "https://www.example.com",
+//   metadata: { links: ["https://www.example.com"] }
 // }
+```
 
-// 2. Detecting Code
-const codeResult = ContentTypeClassifier.categorize(`function hello() {
+### 2. Detecting Code
+
+```javascript
+const codeResult = ContentTypeClassifier.categorize(function hello() {
     return "world";
-}`);
+});
 console.log(codeResult);
-// Output: {
-// type: "code",
-// content: "function hello() {...}",
-// metadata: { codeLanguage: "javascript" }
+// Output:
+// {
+//   type: "code",
+//   content: "function hello() {...}",
+//   metadata: { codeLanguage: "javascript" }
 // }
+```
 
-// 3. Detecting Currency
+### 3. Detecting Currency
+
+```javascript
 const currencyResult = ContentTypeClassifier.categorize("$1,234.56");
 console.log(currencyResult);
-// Output: {
+// Output:
+// {
 //   type: "currency",
 //   content: "$1,234.56",
 //   metadata: { amount: 1234.56, currency: "$" }
 // }
+```
 
-// 4. Detecting Social Posts
+### 4. Detecting Social Posts
+
+```javascript
 const socialResult = ContentTypeClassifier.categorize("Check out #typescript with @johnsmith!");
 console.log(socialResult);
-// Output: {
-// type: "social",
-// content: "Check out #typescript with @johnsmith!",
-// metadata: {
-// hashtags: ["#typescript"],
-// mentions: ["@johnsmith"]
+// Output:
+// {
+//   type: "social",
+//   content: "Check out #typescript with @johnsmith!",
+//   metadata: {
+//     hashtags: ["#typescript"],
+//     mentions: ["@johnsmith"]
+//   }
 // }
-// }
+```
 
-// 5. Detecting CSV
-const csvResult = ContentTypeClassifier.categorize(`name,age,city
-John,30,New York
-Jane,25,Boston`);
+### 5. Detecting CSV
+
+```javascript
+const csvResult = ContentTypeClassifier.categorize("name,age,city\nJohn,30,New York\nJane,25,Boston");
 console.log(csvResult);
-// Output: {
-// type: "csv",
-// content: "name,age,city...",
-// metadata: {
-// structured: [
-// { name: "John", age: "30", city: "New York" },
-// { name: "Jane", age: "25", city: "Boston" }
-// ]
+// Output:
+// {
+//   type: "csv",
+//   content: "name,age,city...",
+//   metadata: {
+//     structured: [
+//       { name: "John", age: "30", city: "New York" },
+//       { name: "Jane", age: "25", city: "Boston" }
+//     ]
+//   }
 // }
-// }
+```
 
-// 6. Error Handling
+### 6. Error Handling
+
+```javascript
 try {
-const result = ContentTypeClassifier.categorize("");
-console.log(result);
+    const result = ContentTypeClassifier.categorize("");
+    console.log(result);
 } catch (error) {
-console.error("Failed to categorize content:", error);
+    console.error("Failed to categorize content:", error);
 }
+```
 
+### 7. Type Checking
+
+```javascript
 import { ContentTypeClassifier, ContentCategory } from 'content-type-classifier';
 
-// With type checking
 function processContent(content: string): void {
-const result: ContentCategory = ContentTypeClassifier.categorize(content);
+    const result: ContentCategory = ContentTypeClassifier.categorize(content);
 
-    switch(result.type) {
+    switch (result.type) {
         case 'link':
             console.log("Found links:", result.metadata?.links);
             break;
@@ -91,42 +132,94 @@ const result: ContentCategory = ContentTypeClassifier.categorize(content);
             console.log("Amount:", result.metadata?.amount);
             console.log("Currency:", result.metadata?.currency);
             break;
-        // ... handle other types
+        // Handle other types...
     }
-
 }
+```
 
-// Processing multiple items
+### 8. Processing Multiple Items
+
+```javascript
 const contents = [
-"https://example.com",
-"$123.45",
-"const x = 42;",
-"#coding @typescript"
+    "https://example.com",
+    "$123.45",
+    "const x = 42;",
+    "#coding @typescript"
 ];
 
 contents.forEach(content => {
-const result = ContentTypeClassifier.categorize(content);
-console.log(`Content type: ${result.type}`);
-console.log("Metadata:", result.metadata);
+    const result = ContentTypeClassifier.categorize(content);
+    console.log(`Content type: ${result.type}`);
+    console.log("Metadata:", result.metadata);
 });
+```
 
-The classifier supports these content types:
+## Supported Content Types
 
-Links
-Code
-Lists
-Email
-JSON
-Markdown
-Equations
-Dates
-Social posts
-Search queries
-Phone numbers
-Addresses
-CSV data
-XML content
-SQL queries
-File paths
-Currency amounts
-Product codes
+The classifier supports the following content types:
+
+- Links
+- Code
+- Lists
+- Email
+- JSON
+- Markdown
+- Equations
+- Dates
+- Social posts
+- Search queries
+- Phone numbers
+- Addresses
+- CSV data
+- XML content
+- SQL queries
+- File paths
+- Currency amounts
+- Product codes
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit issues or pull requests on the [GitHub repository](https://github.com/usmangurowa/text-categorizer).
+
+## License
+
+This project is licensed under the MIT License.
+
+## Cloning and Running Locally
+
+If you want to clone the repository and run it on your machine, you can do so with the following commands:
+
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/usmangurowa/text-categorizer.git
+    ```
+
+2. **Change directory:**
+    ```bash
+    cd text-categorizer
+    ```
+
+3. **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+4. **Build the application:**
+    ```bash
+    npm run build
+    # or
+    yarn build
+    ```
+
+5. **Run tests:**
+    ```bash
+    npm test
+    # or
+    yarn test
+    ```
+
+---
+
+Enjoy using `content-type-classifier`!
