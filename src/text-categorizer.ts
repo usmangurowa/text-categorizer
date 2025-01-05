@@ -114,7 +114,6 @@ export class TextCategorizer {
 
   private static isSearchParams(text: string): boolean {
     const searchPattern = /(\?|\&)?[a-zA-Z0-9_]+=[^&]*/;
-
     return searchPattern.test(text.trim());
   }
 
@@ -158,6 +157,7 @@ export class TextCategorizer {
   }
 
   private static isSql(text: string): boolean {
+    return PATTERNS.SQL.test(text) && text.includes(";");
     return PATTERNS.SQL.test(text) && text.includes(";");
   }
 
@@ -364,8 +364,19 @@ export class TextCategorizer {
           amount: parseFloat(content.match(PATTERNS.MEASUREMENT)?.[0] || ""),
           unit: content.match(/[a-zA-Z]+/)?.[0] || ""
         }
-      }
+      };
+    }
 
+    if (this.isMeasurement(content)) {
+      return {
+        type: "measurement",
+        content,
+        metadata: {
+          amount: parseFloat(content.match(PATTERNS.MEASUREMENT)?.[0] || ""),
+          unit: content.match(/[a-zA-Z]+/)?.[0] || ""
+        }
+      };
+    }
     return { type: "text", content };
   }
 }
