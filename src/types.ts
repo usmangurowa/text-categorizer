@@ -10,7 +10,7 @@ export type ContentCategory = {
     | "equation"
     | "date"
     | "social"
-    | "query"
+    | "search"
     | "phone"
     | "address"
     | "csv"
@@ -18,7 +18,8 @@ export type ContentCategory = {
     | "sql"
     | "filepath"
     | "currency"
-    | "productCode";
+    | "productCode"
+    | "measurement";
   content: string;
   metadata?: {
     links?: string[];
@@ -34,5 +35,6 @@ export type ContentCategory = {
     currency?: string;
     countryCode?: string;
     structured?: any;
+    unit?: string;
   };
 };

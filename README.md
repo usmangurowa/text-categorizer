@@ -180,6 +180,7 @@ The classifier supports the following content types:
 - File paths
 - Currency amounts
 - Product codes
+- Measurement
 
 ## TODO
 
