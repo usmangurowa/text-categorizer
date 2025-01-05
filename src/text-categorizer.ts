@@ -10,8 +10,6 @@ export class TextCategorizer {
 
   private static containsLinks(text: string): string[] | undefined {
     return text.match(PATTERNS.URL) || undefined;
-  private static containsLinks(text: string): string[] | undefined {
-    return text.match(PATTERNS.URL) || undefined;
   }
 
   private static isList(text: string): boolean {
@@ -116,10 +114,6 @@ export class TextCategorizer {
 
   private static isSearchParams(text: string): boolean {
     const searchPattern = /(\?|\&)?[a-zA-Z0-9_]+=[^&]*/;
-  private static isSearchParams(text: string): boolean {
-    const searchPattern = /(\?|\&)?[a-zA-Z0-9_]+=[^&]*/;
-
-    return searchPattern.test(text.trim());
     return searchPattern.test(text.trim());
   }
 
@@ -177,10 +171,6 @@ export class TextCategorizer {
 
   private static isProductCode(text: string): boolean {
     return PATTERNS.PRODUCT_CODE.test(text.trim());
-  }
-
-  private static isMeasurement(text: string): boolean {
-    return PATTERNS.MEASUREMENT.test(text);
   }
 
   private static isMeasurement(text: string): boolean {
@@ -385,8 +375,8 @@ export class TextCategorizer {
           amount: parseFloat(content.match(PATTERNS.MEASUREMENT)?.[0] || ""),
           unit: content.match(/[a-zA-Z]+/)?.[0] || ""
         }
-      }
-
+      };
+    }
     return { type: "text", content };
   }
 }
