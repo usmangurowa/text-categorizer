@@ -10,7 +10,7 @@ export type ContentCategory = {
     | "equation"
     | "date"
     | "social"
-    | "query"
+    | "search"
     | "phone"
     | "address"
     | "csv"

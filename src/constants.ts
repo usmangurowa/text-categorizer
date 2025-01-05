@@ -5,7 +5,7 @@ export const PATTERNS = {
   HASHTAG: /#[a-zA-Z0-9_]+/g,
   MENTION: /@[a-zA-Z0-9_]+/g,
   DATE: /\b(\d{1,4}[-/.]\d{1,2}[-/.]\d{1,4}|\d{1,2}\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,4})\b/gi,
-  EQUATION: /[\d\s]*[+\-*/()=]+[\d\s]*/,
+  EQUATION: /(?:\d+\s*|\(\s*)[+\-*/()=]+\s*(?:\d+\s*|\)) /, ///[\d\s]*[+\-*/()=]+[\d\s]*/,
   PHONE: /(?:\+\d{1,3}\s?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g,
   ADDRESS:
     /\d+\s+([A-Za-z]+(\.?\s|\.)){1,}\s*,?\s*([A-Za-z]+\s*,\s*)?[A-Z]{2}\s*\d{5}(-\d{4})?/g,

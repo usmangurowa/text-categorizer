@@ -112,14 +112,10 @@ export class TextCategorizer {
     };
   }
 
-  private static isSearchQuery(text: string): boolean {
-    const searchPatterns = [
-      /^(what|how|who|where|when|why)\s.+\??$/i,
-      /^["'].+["']\s*(site:|filetype:|OR|AND)/i,
-      /^[^.!?]+\??$/
-    ];
+  private static isSearchParams(text: string): boolean {
+    const searchPattern = /(\?|\&)?[a-zA-Z0-9_]+=[^&]*/;
 
-    return searchPatterns.some((pattern) => pattern.test(text.trim()));
+    return searchPattern.test(text.trim());
   }
 
   private static extractDates(text: string): string[] {
@@ -350,9 +346,9 @@ export class TextCategorizer {
       };
     }
 
-    if (this.isSearchQuery(content)) {
+    if (this.isSearchParams(content)) {
       return {
-        type: "query",
+        type: "search",
         content,
         metadata: { confidence: 0.8 }
       };
