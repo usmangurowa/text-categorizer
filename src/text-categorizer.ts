@@ -364,8 +364,7 @@ export class TextCategorizer {
           amount: parseFloat(content.match(PATTERNS.MEASUREMENT)?.[0] || ""),
           unit: content.match(/[a-zA-Z]+/)?.[0] || ""
         }
-      };
-    }
+      }
 
     return { type: "text", content };
   }
