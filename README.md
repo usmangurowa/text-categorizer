@@ -182,10 +182,6 @@ The classifier supports the following content types:
 - Product codes
 - Measurement
 
-## TODO
-
-- Measurements
-
 ## Contributing
 
 Contributions are welcome! Please feel free to submit issues or pull requests on the [GitHub repository](https://github.com/usmangurowa/text-categorizer).
