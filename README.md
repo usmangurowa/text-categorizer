@@ -181,6 +181,10 @@ The classifier supports the following content types:
 - Currency amounts
 - Product codes
 
+## TODO
+
+- Measurements
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit issues or pull requests on the [GitHub repository](https://github.com/usmangurowa/text-categorizer).
