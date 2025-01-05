@@ -306,14 +306,6 @@ export class TextCategorizer {
       };
     }
 
-    if (this.isSearchQuery(content)) {
-      return {
-        type: "query",
-        content,
-        metadata: { confidence: 0.8 }
-      };
-    }
-
     const dates = this.extractDates(content);
     if (dates.length > 0) {
       return {
@@ -347,6 +339,22 @@ export class TextCategorizer {
           listItems: this.getListItems(content),
           links: this.containsLinks(content)
         }
+      };
+    }
+
+    if (this.isEquation(content)) {
+      return {
+        type: "equation",
+        content,
+        metadata: { format: "math" }
+      };
+    }
+
+    if (this.isSearchQuery(content)) {
+      return {
+        type: "query",
+        content,
+        metadata: { confidence: 0.8 }
       };
     }
 
