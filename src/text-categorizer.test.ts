@@ -91,14 +91,14 @@ describe("TextCategorizer", () => {
   });
 });
 
-// // Testing for measurements
-// describe("TextCategorizer", () => {
-//   it("should categorize text as measurement", () => {
-//     const measurementResult = TextCategorizer.categorize("10 cm");
-//     expect(measurementResult.type).toBe("measurement");
-//     // expect(measurementResult.metadata?.unit).toBe("cm");
-//   });
-// });
+// Testing for measurements
+describe("TextCategorizer", () => {
+  it("should categorize text as measurement", () => {
+    const measurementResult = TextCategorizer.categorize("10 cm");
+    expect(measurementResult.type).toBe("measurement");
+    expect(measurementResult.metadata?.unit).toBe("cm");
+  });
+});
 
 // Test for search params
 describe("TextCategorizer", () => {

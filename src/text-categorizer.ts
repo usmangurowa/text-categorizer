@@ -8,8 +8,8 @@ export class TextCategorizer {
     );
   }
 
-  private static containsLinks(text: string): string[] {
-    return text.match(PATTERNS.URL) || [];
+  private static containsLinks(text: string): string[] | undefined {
+    return text.match(PATTERNS.URL) || undefined;
   }
 
   private static isList(text: string): boolean {
@@ -158,9 +158,7 @@ export class TextCategorizer {
   }
 
   private static isSql(text: string): boolean {
-    const sqlKeywords =
-      /\b(SELECT|INSERT|UPDATE|DELETE|FROM|WHERE|JOIN|GROUP BY|ORDER BY|HAVING|CREATE|ALTER|DROP|TABLE|INDEX)\b/i;
-    return sqlKeywords.test(text) && text.includes(";");
+    return PATTERNS.SQL.test(text) && text.includes(";");
   }
 
   private static isFilePath(text: string): boolean {
@@ -173,6 +171,10 @@ export class TextCategorizer {
 
   private static isProductCode(text: string): boolean {
     return PATTERNS.PRODUCT_CODE.test(text.trim());
+  }
+
+  private static isMeasurement(text: string): boolean {
+    return PATTERNS.MEASUREMENT.test(text);
   }
 
   private static parseCurrency(text: string): {
@@ -350,7 +352,18 @@ export class TextCategorizer {
       return {
         type: "search",
         content,
-        metadata: { confidence: 0.8 }
+        metadata: { links: this.containsLinks(content) }
+      };
+    }
+
+    if (this.isMeasurement(content)) {
+      return {
+        type: "measurement",
+        content,
+        metadata: {
+          amount: parseFloat(content.match(PATTERNS.MEASUREMENT)?.[0] || ""),
+          unit: content.match(/[a-zA-Z]+/)?.[0] || ""
+        }
       };
     }
 

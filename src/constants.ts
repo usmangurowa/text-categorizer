@@ -12,5 +12,8 @@ export const PATTERNS = {
   CURRENCY: /(?:[\$\€\£\¥]|USD|EUR|GBP|JPY)\s*\d+(:?\,\d{3})*(\.\d{2})?/g,
   PRODUCT_CODE: /^[A-Z0-9]{3,}-[A-Z0-9]{3,}$|^[A-Z]{2,4}\d{4,}$/,
   FILE_PATH:
-    /^(?:[a-zA-Z]:\\|\/|\.\/|\.\.\/)(?:[^\\\/:*?"<>|\r\n]+\\)*[^\\\/:*?"<>|\r\n]*$/
+    /^(?:[a-zA-Z]:\\|\/|\.\/|\.\.\/)(?:[^\\\/:*?"<>|\r\n]+\\)*[^\\\/:*?"<>|\r\n]*$/,
+  MEASUREMENT:
+    /(\d+(\.\d+)?\s*(cm|mm|in|ft|yd|mi|km|g|kg|lb|oz|ml|l|tsp|tbsp|cup|pt|qt|gal|fl oz|in²|ft²|yd²|mi²|km²|ac|ha|sq mi|sq km|°F|°C|K|°|'|"))/gi,
+  SQL: /\b(SELECT|INSERT|UPDATE|DELETE|FROM|WHERE|JOIN|GROUP BY|ORDER BY|HAVING|CREATE|ALTER|DROP|TABLE|INDEX)\b/i
 };
