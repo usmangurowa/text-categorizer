@@ -1,6 +1,6 @@
 {
   "name": "text-categorizer",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Intelligent text content type detection and classification",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
