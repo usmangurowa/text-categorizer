@@ -138,6 +138,17 @@ export class TextCategorizer {
     const lines = text.trim().split("\n");
     if (lines.length < 2) return false;
 
+    const hasComma = lines.every((line) => line.includes(","));
+    const hasSemicolon = lines.every((line) => line.includes(";"));
+
+    if (!hasComma && !hasSemicolon) return false;
+
+    const hasLineBreaks = lines.some(
+      (line) => line.includes("\n") || line.includes("\r")
+    );
+
+    if (!hasLineBreaks) return false;
+
     const commaCount = lines[0].split(",").length;
     return lines.every((line) => line.split(",").length === commaCount);
   }
